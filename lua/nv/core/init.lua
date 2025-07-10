@@ -1,3 +1,5 @@
 require("nv.core.options")
 require("nv.core.autocommands")
+-- require("nv.core.autocomplete")
 require("nv.core.keymaps")
+require("nv.core.yank")

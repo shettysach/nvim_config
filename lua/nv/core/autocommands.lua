@@ -13,3 +13,16 @@ autocmd({ "TermOpen" }, {
         vim.cmd([[startinsert]])
     end,
 })
+
+autocmd({ "TextYankPost" }, {
+    callback = function()
+        vim.hl.on_yank({higroup='Visual'})
+    end,
+})
+
+autocmd("FileType", {
+	pattern = "cuda",
+	callback = function()
+		vim.bo.commentstring = "// %s"
+	end,
+})

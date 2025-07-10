@@ -1,121 +1,184 @@
 return {
-    "neovim/nvim-lspconfig",
-    event = { "BufReadPre", "BufNewFile" },
-    dependencies = {
-        "hrsh7th/cmp-nvim-lsp",
-        { "antosha417/nvim-lsp-file-operations", config = true },
-    },
-    config = function()
-        vim.api.nvim_create_autocmd("LspAttach", {
-            group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-            callback = function(ev)
-                local opts = { buffer = ev.buf, silent = true }
-                local keymap = vim.keymap
+  "neovim/nvim-lspconfig",
+  event = { "BufReadPre", "BufNewFile" },
+  dependencies = {
+    "saghen/blink.cmp",
+    { "antosha417/nvim-lsp-file-operations", config = true },
+  },
+  config = function()
+    vim.api.nvim_create_autocmd("LspAttach", {
+      group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+      callback = function(ev)
+        local opts = { buffer = ev.buf, silent = true }
+        local keymap = vim.keymap
 
-                opts.desc = "Show LSP references"
-                keymap.set("n", "gR", "<cmd>FzfLua lsp_references<CR>", opts) -- show definition, references
+        opts.desc = "Show LSP references"
+        keymap.set("n", "gR", "<cmd>FzfLua lsp_references<CR>", opts) -- show definition, references
 
-                opts.desc = "Go to declaration"
-                keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- go to declaration
+        opts.desc = "Go to declaration"
+        keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- go to declaration
 
-                opts.desc = "Show LSP definitions"
-                keymap.set("n", "gd", "<cmd>FzfLua lsp_definitions<CR>", opts) -- show lsp definitions
+        opts.desc = "Show LSP definitions"
+        keymap.set("n", "gd", "<cmd>FzfLua lsp_definitions<CR>", opts) -- show lsp definitions
 
-                opts.desc = "Show LSP implementations"
-                keymap.set("n", "gi", "<cmd>FzfLua lsp_implementations<CR>", opts) -- show lsp implementations
+        opts.desc = "Show LSP references"
+        keymap.set("n", "gr", "<cmd>FzfLua lsp_references<CR>", opts) -- show lsp implementations
 
-                opts.desc = "Show LSP type definitions"
-                keymap.set("n", "gt", "<cmd>FzfLua lsp_type_definitions<CR>", opts) -- show lsp type definitions
+        opts.desc = "Show LSP implementations"
+        keymap.set("n", "gi", "<cmd>FzfLua lsp_implementations<CR>", opts) -- show lsp implementations
 
-                opts.desc = "See available code actions"
-                keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
+        opts.desc = "Show LSP type definitions"
+        keymap.set("n", "gt", "<cmd>FzfLua lsp_type_definitions<CR>", opts) -- show lsp type definitions
 
-                opts.desc = "Smart rename"
-                keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts) -- smart rename
+        opts.desc = "See available code actions"
+        keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
 
-                opts.desc = "Show buffer diagnostics"
-                keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
+        opts.desc = "Smart rename"
+        keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts) -- smart rename
 
-                opts.desc = "Show line diagnostics"
-                keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
+        opts.desc = "Show buffer diagnostics"
+        keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
 
-                opts.desc = "Go to previous diagnostic"
-                keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
+        opts.desc = "Show documentation for what is under cursor"
+        keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
 
-                opts.desc = "Go to next diagnostic"
-                keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
+        opts.desc = "Restart LSP"
+        keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
+      end,
+    })
 
-                opts.desc = "Show documentation for what is under cursor"
-                keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
+    local capabilities = require("blink.cmp").get_lsp_capabilities() --
+    local lspconfig = require("lspconfig")
+    -- local signs = { Error = "", Warn = "", Hint = "󰌶", Info = "" }
+    -- for type, icon in pairs(signs) do
+    --     local hl = "DiagnosticSign" .. type
+    --     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+    -- end
 
-                opts.desc = "Restart LSP"
-                keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
-            end,
-        })
+    local handlers = {
+      "textDocument/hover",
+      "textDocument/signatureHelp",
+    }
 
-        local lspconfig = require("lspconfig")
-        local cmp_nvim_lsp = require("cmp_nvim_lsp")
-        local capabilities = cmp_nvim_lsp.default_capabilities()
+    lspconfig.rust_analyzer.setup({
+      filetypes = { "rust" },
+      capabilities = capabilities,
+      handlers = handlers,
+      settings = {
+        ["rust-analyzer"] = {
 
-        local signs = { Error = "", Warn = "", Hint = "󰌶", Info = "" }
-        for type, icon in pairs(signs) do
-            local hl = "DiagnosticSign" .. type
-            vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-        end
+          cargo = { -- features = "all",
+            buildScripts = { enable = false },
+          },
+          procMacro = { enable = false },
+          diagnostics = { disabled = { "unresolved-proc-macro" } },
 
-        local border = {
-            { "┌", "FloatBorder" },
-            { "─", "FloatBorder" },
-            { "┐", "FloatBorder" },
-            { "│", "FloatBorder" },
-            { "┘", "FloatBorder" },
-            { "─", "FloatBorder" },
-            { "└", "FloatBorder" },
-            { "│", "FloatBorder" },
-        }
+          cachePriming = { enable = false },
 
-        local handlers = {
-            ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
-            ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
-        }
+          checkOnSave = false,
+          check = { command = "clippy" },
+        },
+      },
+    })
 
-        lspconfig.rust_analyzer.setup({
-            filetype = { "rust" },
-            capabilities = capabilities,
-            handlers = handlers,
-            settings = {
-                ["rust-analyzer"] = {
-                    cargo = {
-                        features = "all",
-                    },
-                    checkOnSave = {
-                        command = "clippy",
-                    },
-                },
+    lspconfig.clangd.setup({
+      filetypes = { "c", "cpp", "cuda", "proto", "hpp" },
+      capabilities = capabilities,
+      handlers = handlers,
+      settings = {},
+    })
+
+    lspconfig.hls.setup({
+      filetypes = { "haskell", "lhaskell", "cabal" },
+      capabilities = capabilities,
+      handlers = handlers,
+      settings = {
+        haskell = {
+          plugin = {
+            rename = {
+              config = {
+                crossModule = true,
+              },
             },
-        })
+          },
+        },
+      },
+    })
 
-        lspconfig.zls.setup({
-            filetype = { "zig" },
-            capabilities = capabilities,
-            handlers = handlers,
-            settings = {},
-        })
+    lspconfig.ols.setup({
+      filetype = { "odin" },
+      settings = {
+        enable_rename = true,
+        enable_references = true,
+      },
+    })
 
-        lspconfig.lua_ls.setup({
-            filetype = { "lua" },
-            capabilities = capabilities,
-            handlers = handlers,
-            settings = {
-                Lua = {
-                    diagnostics = {
-                        globals = { "vim" },
-                    },
-                    completion = {
-                        callSnippet = "Replace",
-                    },
-                },
-            },
-        })
-    end,
+    lspconfig.zls.setup({
+      filetype = { "zig" },
+      capabilities = capabilities,
+      handlers = handlers,
+      settings = {},
+    })
+
+    -- lspconfig.nil_ls.setup({
+    lspconfig.nixd.setup({
+      filetype = { "nix" },
+      capabilities = capabilities,
+      handlers = handlers,
+      settings = {
+        -- ['nil'] = {
+        --     testSetting = 42,
+        -- },
+      },
+    })
+
+    lspconfig.lua_ls.setup({
+      filetype = { "lua" },
+      capabilities = capabilities,
+      handlers = handlers,
+      settings = {},
+    })
+
+    -- PYTHON
+    -- require('lspconfig').basedpyright.setup {
+    --   filetype = { "python" },
+    --   capabilities = capabilities,
+    --   handlers = handlers,
+    --   settings = {
+    --     pyright = {
+    --       disableOrganizeImports = true,
+    --     },
+    --     basedpyright = {
+    --       typeCheckingMode = "standard",
+    --     },
+    --     python = {
+    --       analysis = {
+    --         ignore = { '*' },
+    --       },
+    --     },
+    --   },
+    -- }
+
+    require("lspconfig").ruff.setup({
+      filetype = { "python" },
+      capabilities = capabilities,
+      handlers = handlers,
+      settings = {},
+    })
+
+    -- vim.api.nvim_create_autocmd("LspAttach", {
+    --   group = vim.api.nvim_create_augroup('lsp_attach_disable_ruff_hover', { clear = true }),
+    --   callback = function(args)
+    --     local client = vim.lsp.get_client_by_id(args.data.client_id)
+    --     if client == nil then
+    --       return
+    --     end
+    --     if client.name == 'ruff' then
+    --       -- Disable hover in favor of Pyright
+    --       client.server_capabilities.hoverProvider = false
+    --     end
+    --   end,
+    --   desc = 'LSP: Disable hover capability from Ruff',
+    -- })
+  end,
 }
