@@ -1,4 +1,5 @@
 return {
+  --[[
   {
     "echasnovski/mini.diff",
     version = "*",
@@ -15,6 +16,7 @@ return {
     opts = {
       view = {
         style = "sign",
+        -- style = "number",
         signs = {
           add = "┃",
           change = "┃",
@@ -23,6 +25,9 @@ return {
       },
     },
   },
+  ]]
+  --
+
   {
     "echasnovski/mini.clue",
     version = "*",
@@ -75,6 +80,7 @@ return {
       })
     end,
   },
+
   {
     "echasnovski/mini.indentscope",
     version = "*",
@@ -116,5 +122,7 @@ return {
       })
     end,
   },
+
   { "echasnovski/mini.surround", version = "*", opts = {} },
+  -- { "tpope/vim-surround" },
 }

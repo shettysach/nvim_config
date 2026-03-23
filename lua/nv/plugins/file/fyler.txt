@@ -1,5 +1,8 @@
 return {
   "A7Lavinraj/fyler.nvim",
   dependencies = { "echasnovski/mini.icons" },
-  opts = {}
+  opts = {
+    -- views = { explorer = { win = { kind = "split_left_most" } } },
+    vim.keymap.set("n", "-", "<CMD>Fyler<CR>"),
+  },
 }

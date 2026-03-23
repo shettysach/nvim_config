@@ -20,20 +20,14 @@ return {
     dependencies = { { "echasnovski/mini.icons", opts = {} } },
     -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
     -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
-    lazy = false,
+    lazy = true,
     vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" }),
   },
 
   {
-    "refractalize/oil-git-status.nvim",
-
-    after = {
-      "oil.nvim",
-    },
-
-    config = function()
-      require("oil-git-status").setup()
-    end,
+    "benomahony/oil-git.nvim",
+    dependencies = { "stevearc/oil.nvim" },
+    opts = {},
   },
 
   {

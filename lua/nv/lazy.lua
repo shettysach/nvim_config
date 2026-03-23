@@ -22,21 +22,15 @@ require("lazy").setup({
   { import = "nv.plugins.file" },
   { import = "nv.plugins.language" },
   { import = "nv.plugins.debug" },
-  { import = "nv.plugins.llm" },
+  -- { import = "nv.plugins.ai" },
 }, {
-  ui = {
-    border = "single",
-    size = {
-      width = 0.8,
-      height = 0.8,
-    },
-  },
-  checker = {
-    enabled = true,
-    notify = false,
-  },
+  ui = { border = "single" },
+  checker = { enabled = true, notify = false },
   change_detection = {
     notify = false,
+  },
+  git = {
+    timeout = 1200,
   },
 })
 

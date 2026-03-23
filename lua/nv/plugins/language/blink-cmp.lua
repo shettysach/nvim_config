@@ -3,11 +3,11 @@ return {
   -- optional: provides snippets for the snippet source
   dependencies = {
     {
-        {
-            "L3MON4D3/LuaSnip",
-            version = "v2.*",
-            build = "make install_jsregexp",
-        },
+      {
+        "L3MON4D3/LuaSnip",
+        version = "v2.*",
+        build = "make install_jsregexp",
+      },
     },
   },
 
@@ -34,30 +34,32 @@ return {
     --
     -- See :h blink-cmp-config-keymap for defining your own keymap
     keymap = {
-      preset = 'enter',
-      ['<Tab>'] = { 'select_next', 'fallback' },
-      ['<S-Tab>'] = { 'select_prev', 'fallback' },
+      preset = "enter",
+      -- Make manual menu open immediately preview-insert the top item
+      -- (pairs with `completion.list.selection.auto_insert = true`)
+      ["<C-space>"] = { "show_and_insert", "show_documentation", "hide_documentation" },
+      -- If you hit <Esc>, don't leave an auto-inserted preview behind
+      ["<Esc>"] = { "cancel", "fallback" },
+      ["<Tab>"] = { "select_next", "fallback" },
+      ["<S-Tab>"] = { "select_prev", "fallback" },
     },
     snippets = { preset = "luasnip" },
     appearance = {
-      -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
-      -- Adjusts spacing to ensure icons are aligned
       nerd_font_variant = "mono",
     },
 
-    -- (Default) Only show the documentation popup when manually triggered
-    completion = { 
-        documentation = { 
-            auto_show = true,
-        }, 
-        menu = {
-            -- draw = { 
-            --     columns = { 
-            --         { "label", "label_description", gap = 1 }, 
-            --         { "kind_icon", "kind", gap = 1 }
-            --     } 
-            -- },
-        },
+    completion = {
+      -- Insert a "preview" of the currently selected item into the buffer.
+      -- Use `cancel` (mapped to <Esc> above, default <C-e>) to undo it.
+      list = {
+        selection = { preselect = true, auto_insert = true },
+      },
+      documentation = {
+        auto_show = true,
+      },
+      menu = {
+        auto_show = true,
+      },
     },
 
     -- Default list of enabled providers defined so that you can extend it

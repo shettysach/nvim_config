@@ -6,6 +6,7 @@ return {
 
     conform.setup({
       formatters_by_ft = {
+        -- nix = { "alejandra" },
         nix = { "alejandra" },
         -- nu = {"nufmt"};
 
@@ -13,6 +14,7 @@ return {
 
         css = { "prettierd" },
         html = { "prettierd" },
+        xml = { "xmlformat" },
         javascript = { "prettierd" },
         typescript = { "prettierd" },
         json = { "prettierd" },
