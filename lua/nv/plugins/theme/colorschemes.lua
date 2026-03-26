@@ -1,6 +1,7 @@
 return {
   { "raddari/last-color.nvim" },
   { "folke/tokyonight.nvim", priority = 1000, opts = { style = "night" } },
+
   -- {
   --   "catppuccin/nvim",
   --   name = "catppuccin",
@@ -16,4 +17,11 @@ return {
   --   },
   -- },
   -- { "cocopon/iceberg.vim", priority = 1000 },
+
+  -- {
+  --   "zenbones-theme/zenbones.nvim",
+  --   dependencies = "rktjmp/lush.nvim",
+  --   lazy = false,
+  --   priority = 1000,
+  -- },
 }

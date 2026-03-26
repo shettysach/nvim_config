@@ -1,7 +1,8 @@
 ---@diagnostic disable: missing-fields
 return {
   "nvim-treesitter/nvim-treesitter",
-  event = { "BufReadPre", "BufNewFile" },
+  -- event = { "BufReadPre", "BufNewFile" },
+  lazy = false,
   build = ":TSUpdate",
   dependencies = {
     "windwp/nvim-ts-autotag",
@@ -9,17 +10,19 @@ return {
   config = function()
     local treesitter = require("nvim-treesitter")
 
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = { "markdown", "markdown_inline" },
+      callback = function()
+        vim.treesitter.start()
+      end,
+    })
+
     treesitter.setup({
-      highlight = {
-        enable = true,
-      },
-
+      highlight = { enable = true },
       indent = { enable = true },
+      autotag = { enable = true },
 
-      autotag = {
-        enable = true,
-      },
-
+      auto_install = true,
       ensure_installed = {
         "rust",
         "python",

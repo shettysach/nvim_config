@@ -24,20 +24,13 @@ return {
       },
 
       keymap = {
-        true,
         builtin = {
-          true,
-        },
-        fzf = {
-          true,
           ["ctrl-a"] = "toggle-all",
         },
       },
 
       actions = {
-        true,
         files = {
-          true,
           ["ctrl-q"] = require("fzf-lua").actions.file_sel_to_qf,
         },
       },

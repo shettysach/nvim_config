@@ -4,7 +4,7 @@ autocmd({ "ColorScheme" }, {
   callback = function()
     vim.cmd([[highlight! link LspInlayHint DiagnosticHint]])
     vim.cmd([[highlight! link Beacon TodoBgTODO]])
-    -- vim.cmd([[highlight! link LineNr Type]])
+    vim.cmd([[highlight! link LineNr Type]])
   end,
 })
 

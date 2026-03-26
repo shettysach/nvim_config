@@ -33,11 +33,8 @@ return {
 
             function()
               local file = vim.api.nvim_buf_get_name(0)
-              if file == "" then
-                return ""
-              end
-              local dir = vim.fn.fnamemodify(file, ":p:h")
-              return vim.fn.fnamemodify(dir, ":t")
+              if file == "" then return "" end
+              return vim.fn.fnamemodify(file, ":p:h:t")
             end,
             color = { gui = "bold" },
             -- padding = { left = 1, right = 1 },

@@ -116,12 +116,8 @@ return {
     })
 
     -- Nix
-    -- Switch from nil_ls to nixd as in your current setup
     vim.lsp.config("nixd", { filetypes = { "nix" } })
-    vim.lsp.config("nil_ls", { filetypes = { "nix" } })
-
     vim.lsp.enable("nixd")
-    -- vim.lsp.enable("nil_ls")
 
     vim.lsp.config("lua_ls", {
       filetypes = { "lua" },
