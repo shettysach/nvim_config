@@ -51,6 +51,9 @@ return {
     completion = {
       -- Insert a "preview" of the currently selected item into the buffer.
       -- Use `cancel` (mapped to <Esc> above, default <C-e>) to undo it.
+      keyword = {
+        range = 'full',
+      },
       list = {
         selection = { preselect = true, auto_insert = true },
       },

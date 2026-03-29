@@ -21,7 +21,7 @@ require("lazy").setup({
   { import = "nv.plugins.finders" },
   { import = "nv.plugins.file" },
   { import = "nv.plugins.language" },
-  { import = "nv.plugins.debug" },
+  -- { import = "nv.plugins.debug" },
   -- { import = "nv.plugins.ai" },
 }, {
   ui = { border = "single" },

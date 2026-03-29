@@ -1,5 +1,3 @@
-vim.cmd("let g:netrw_liststyle = 3")
-
 local opt = vim.opt
 
 opt.undofile = true
@@ -18,7 +16,7 @@ opt.ignorecase = true
 opt.smartcase = true
 
 opt.winborder = "single"
-opt.shortmess = "IF"
+-- opt.shortmess = "IF"
 opt.termguicolors = true
 opt.showmode = false
 opt.background = "dark"
@@ -34,8 +32,9 @@ opt.breakindent = true
 opt.showbreak = "󰘍 "
 opt.linebreak = true
 
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+vim.g.netrw_liststyle = 3
+-- vim.g.loaded_netrw = 1
+-- vim.g.loaded_netrwPlugin = 1
 
 opt.splitright = true
 opt.splitbelow = true
