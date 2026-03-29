@@ -1,16 +1,16 @@
 local languages = {
   "lua",
+  "nix",
 
   "rust",
-  "python",
   "c",
-  "nix",
-  "bash",
-  "toml",
+  "cpp",
+  "python",
 
   "markdown",
   "markdown_inline",
   "comment",
+  "toml",
 
   "zig",
   "odin",
@@ -19,6 +19,7 @@ local languages = {
   "gitignore",
   "vim",
   "vimdoc",
+  "bash",
 
   "json",
   "html",

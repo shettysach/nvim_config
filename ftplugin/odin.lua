@@ -7,6 +7,5 @@ vim.lsp.config("ols", {
     checker_args = "-strict-style",
   },
 })
-vim.lsp.enable("ols")
 vim.bo.shiftwidth = 4
 vim.bo.tabstop = 4

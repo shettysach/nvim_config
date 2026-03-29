@@ -1,6 +1,6 @@
 return {
   "neovim/nvim-lspconfig",
-  event = { "BufReadPre", "BufNewFile" },
+  lazy = false,
   dependencies = {
     "saghen/blink.cmp",
     { "antosha417/nvim-lsp-file-operations", config = true },
@@ -52,6 +52,19 @@ return {
     vim.lsp.config("*", {
       capabilities = capabilities,
     })
+
+    vim.lsp.enable({
+      "clangd",
+      "harper_ls",
+      "hls",
+      "lua_ls",
+      "marksman",
+      "nixd",
+      "ols",
+      "ruff",
+      "rust_analyzer",
+      "ty",
+      "zls",
+    })
   end,
 }
-

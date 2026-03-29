@@ -10,6 +10,7 @@ return {
         nix = { "alejandra" },
         -- nu = {"nufmt"};
 
+        cpp = { "clang-format" },
         haskell = { "fourmolu", "stylish-haskell" },
 
         css = { "prettierd" },

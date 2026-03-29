@@ -9,6 +9,5 @@ vim.lsp.config("hls", {
     },
   },
 })
-vim.lsp.enable("hls")
 vim.bo.shiftwidth = 2
 vim.bo.tabstop = 2
