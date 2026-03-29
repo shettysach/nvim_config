@@ -1,7 +1,7 @@
 return {
   "j-hui/fidget.nvim",
   tag = "v1.4.5",
-  event = { "BufReadPre", "BufNewFile" },
+  event = "VeryLazy",
 
   config = function()
     local fidget = require("fidget")

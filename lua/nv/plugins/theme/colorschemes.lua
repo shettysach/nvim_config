@@ -1,11 +1,11 @@
 return {
   { "raddari/last-color.nvim" },
 
-  {
-    "folke/tokyonight.nvim",
-    priority = 1000,
-    opts = { style = "night" },
-  },
+  -- {
+  --   "folke/tokyonight.nvim",
+  --   priority = 1000,
+  --   opts = { style = "night" },
+  -- },
 
   {
     "rebelot/kanagawa.nvim",
