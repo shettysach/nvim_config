@@ -1,11 +1,11 @@
 return {
   { "raddari/last-color.nvim" },
 
-  -- {
-  --   "folke/tokyonight.nvim",
-  --   priority = 1000,
-  --   opts = { style = "night" },
-  -- },
+  {
+    "folke/tokyonight.nvim",
+    priority = 1000,
+    opts = { style = "night" },
+  },
 
   {
     "rebelot/kanagawa.nvim",
@@ -26,27 +26,4 @@ return {
       },
     },
   },
-
-  -- {
-  --   "catppuccin/nvim",
-  --   name = "catppuccin",
-  --   priority = 1000,
-  --   opts = {
-  --     custom_highlights = function(colors)
-  --       return {
-  --         ["@module"] = { fg = colors.lavender },
-  --         ["@property"] = { fg = colors.blue },
-  --         Type = { fg = colors.lavender },
-  --       }
-  --     end,
-  --   },
-  -- },
-  -- { "cocopon/iceberg.vim", priority = 1000 },
-
-  -- {
-  --   "zenbones-theme/zenbones.nvim",
-  --   dependencies = "rktjmp/lush.nvim",
-  --   lazy = false,
-  --   priority = 1000,
-  -- },
 }

@@ -3,7 +3,6 @@ return {
   lazy = false,
   dependencies = {
     "saghen/blink.cmp",
-    { "antosha417/nvim-lsp-file-operations", config = true },
   },
   config = function()
     vim.api.nvim_create_autocmd("LspAttach", {

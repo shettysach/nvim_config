@@ -1,33 +1,4 @@
 return {
-  --[[
-  {
-    "echasnovski/mini.diff",
-    version = "*",
-    event = { "BufReadPre", "BufNewFile" },
-    keys = {
-      {
-        "<leader>go",
-        function()
-          require("mini.diff").toggle_overlay(0)
-        end,
-        desc = "Toggle mini.diff overlay",
-      },
-    },
-    opts = {
-      view = {
-        style = "sign",
-        -- style = "number",
-        signs = {
-          add = "┃",
-          change = "┃",
-          delete = "",
-        },
-      },
-    },
-  },
-  ]]
-  --
-
   {
     "echasnovski/mini.clue",
     version = "*",
@@ -111,11 +82,7 @@ return {
 
     init = function()
       vim.api.nvim_create_autocmd("FileType", {
-        pattern = {
-          "fzf",
-          "help",
-          "lazy",
-        },
+        pattern = { "fzf", "help", "lazy" },
         callback = function()
           vim.b.miniindentscope_disable = true
         end,

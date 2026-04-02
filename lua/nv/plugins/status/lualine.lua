@@ -1,6 +1,6 @@
 return {
   "nvim-lualine/lualine.nvim",
-  dependencies = { "nvim-tree/nvim-web-devicons" },
+  dependencies = { "nvim-mini/mini.icons" },
   config = function()
     local lualine = require("lualine")
 
@@ -9,8 +9,8 @@ return {
         globalstatus = true,
         theme = "auto",
 
-        section_separators = { left = "", right = "" },
-        component_separators = { left = "", right = "" },
+        -- section_separators = { left = "", right = "" },
+        -- component_separators = { left = "", right = "" },
 
         -- section_separators = { left = "", right = "" },
         -- component_separators = { left = "│", right = "│" },
@@ -28,13 +28,12 @@ return {
         lualine_a = {
           {
             -- function()
-            --   return vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
             -- end,
 
             function()
               local file = vim.api.nvim_buf_get_name(0)
-              if file == "" then return "" end
               return vim.fn.fnamemodify(file, ":p:h:t")
+              --   return vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
             end,
             color = { gui = "bold" },
             -- padding = { left = 1, right = 1 },
