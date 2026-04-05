@@ -1,9 +1,11 @@
 return {
   "A7Lavinraj/fyler.nvim",
   dependencies = { "nvim-mini/mini.icons" },
-  branch = "main", -- Use stable branch for production
-  lazy = false, -- Necessary for `default_explorer` to work properly
-  vim.keymap.set("n", "-", "<CMD>Fyler<CR>"),
+  branch = "main",
+  keys = {
+    { "-", "<CMD>Fyler<CR>", desc = "Open file explorer" },
+  },
+  lazy = false,
   opts = {
     views = {
       finder = {

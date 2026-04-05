@@ -1,26 +1,21 @@
 local languages = {
   "lua",
   "nix",
-
   "rust",
   "c",
   "cpp",
   "python",
-
   "markdown",
   "markdown_inline",
   "comment",
   "toml",
-
   "zig",
   "odin",
   "haskell",
-
   "gitignore",
   "vim",
   "vimdoc",
   "bash",
-
   "json",
   "html",
   "css",
@@ -29,31 +24,15 @@ local languages = {
 ---@diagnostic disable: missing-fields
 return {
   "nvim-treesitter/nvim-treesitter",
-  lazy = false,
+  event = "VeryLazy",
   build = ":TSUpdate",
-  dependencies = {
-    "windwp/nvim-ts-autotag",
-    "MeanderingProgrammer/treesitter-modules.nvim",
-  },
   config = function()
     local treesitter = require("nvim-treesitter")
-    treesitter.install(languages)
+    -- treesitter.install(languages)
     treesitter.setup({
       highlight = { enable = true },
       indent = { enable = true },
       autotag = { enable = true },
-    })
-
-    require("treesitter-modules").setup({
-      incremental_selection = {
-        enable = true,
-        keymaps = {
-          init_selection = "<C-space>",
-          node_incremental = "<C-space>",
-          node_decremental = "<BS>",
-          scope_incremental = false,
-        },
-      },
     })
   end,
 }

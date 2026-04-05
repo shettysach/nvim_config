@@ -1,5 +1,6 @@
 return {
   "saghen/blink.cmp",
+  event = "BufReadPre",
   -- optional: provides snippets for the snippet source
   dependencies = {
     {
@@ -52,7 +53,7 @@ return {
       -- Insert a "preview" of the currently selected item into the buffer.
       -- Use `cancel` (mapped to <Esc> above, default <C-e>) to undo it.
       keyword = {
-        range = 'full',
+        range = "full",
       },
       list = {
         selection = { preselect = true, auto_insert = true },
