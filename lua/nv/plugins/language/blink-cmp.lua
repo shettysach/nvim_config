@@ -1,14 +1,12 @@
 return {
   "saghen/blink.cmp",
-  event = "BufReadPre",
+  event = "InsertEnter",
   -- optional: provides snippets for the snippet source
   dependencies = {
     {
-      {
-        "L3MON4D3/LuaSnip",
-        version = "v2.*",
-        build = "make install_jsregexp",
-      },
+      "L3MON4D3/LuaSnip",
+      version = "v2.*",
+      build = "make install_jsregexp",
     },
   },
 
@@ -80,4 +78,13 @@ return {
     fuzzy = { implementation = "prefer_rust_with_warning" },
   },
   opts_extend = { "sources.default" },
+
+  config = function(_, opts)
+    require("blink.cmp").setup(opts)
+
+    local capabilities = require("blink.cmp").get_lsp_capabilities()
+    vim.lsp.config("*", {
+      capabilities = capabilities,
+    })
+  end,
 }
