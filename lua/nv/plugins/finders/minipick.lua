@@ -26,6 +26,8 @@ return {
       },
     })
 
+    vim.api.nvim_set_hl(0, "MiniPickMatchCurrent", { link = "Pmenu" })
+
     local keymap = vim.keymap
     keymap.set("n", "<leader>fs", function()
       extra.pickers.lsp({ scope = "document_symbol" })

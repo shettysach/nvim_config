@@ -3,6 +3,9 @@ local opt = vim.opt
 opt.undofile = true
 opt.mouse = {}
 
+opt.cursorline = true
+opt.cursorlineopt = "number"
+
 opt.relativenumber = true
 opt.number = true
 
