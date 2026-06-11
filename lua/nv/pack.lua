@@ -49,7 +49,6 @@ vim.api.nvim_create_autocmd("PackChanged", {
 })
 
 vim.pack.add({
-  gh("nvim-lua/plenary.nvim"),
   gh("raddari/last-color.nvim"),
   gh("folke/tokyonight.nvim"),
   gh("nvim-mini/mini.icons"),
@@ -76,7 +75,7 @@ vim.pack.add({
   gh("Bilal2453/luvit-meta"),
 }, { load = function() end })
 
-local function load(names, module)
+local function load_plugins(names, module)
   for _, name in ipairs(names) do
     vim.cmd.packadd(name)
   end
@@ -85,22 +84,22 @@ local function load(names, module)
   end
 end
 
-load({ "last-color.nvim", "tokyonight.nvim" }, "nv.plugins.theme.colorschemes")
-load({ "transparent.nvim" }, "nv.plugins.theme.transparent")
-load({ "mini.icons" }, "nv.plugins.misc.icons")
-load({ "lualine.nvim" }, "nv.plugins.status.lualine")
+load_plugins({ "last-color.nvim", "tokyonight.nvim" }, "nv.plugins.theme.colorschemes")
+load_plugins({ "transparent.nvim" }, "nv.plugins.theme.transparent")
+load_plugins({ "mini.icons" }, "nv.plugins.misc.icons")
+load_plugins({ "lualine.nvim" }, "nv.plugins.status.lualine")
 vim.g.canola = { columns = { "git_status", "icon" } }
 vim.g.canola_git = {
   show = { untracked = true, ignored = true },
   format = "compact",
 }
-load({ "canola.nvim", "canola-collection" }, "nv.plugins.file.canola")
-load({ "LuaSnip", "blink.cmp" }, "nv.plugins.language.blink-cmp")
+load_plugins({ "canola.nvim", "canola-collection" }, "nv.plugins.file.canola")
+load_plugins({ "LuaSnip", "blink.cmp" }, "nv.plugins.language.blink-cmp")
 
 vim.api.nvim_create_autocmd("InsertEnter", {
   once = true,
   callback = function()
-    load({ "nvim-autopairs" }, "nv.plugins.misc.autopairs")
+    load_plugins({ "nvim-autopairs" }, "nv.plugins.misc.autopairs")
   end,
 })
 
@@ -108,21 +107,20 @@ vim.api.nvim_create_autocmd("FileType", {
   once = true,
   pattern = "lua",
   callback = function()
-    load({ "luvit-meta", "lazydev.nvim" }, "nv.plugins.lazydev")
+    load_plugins({ "luvit-meta", "lazydev.nvim" }, "nv.plugins.lazydev")
   end,
 })
 
 vim.schedule(function()
-  load({ "plenary.nvim" })
-  load({ "fff.nvim" }, "nv.plugins.finders.fff")
-  load({ "mini.icons", "mini.extra", "mini.pick" }, "nv.plugins.finders.minipick")
-  load({ "gitsigns.nvim" }, "nv.plugins.misc.gitsigns")
-  load({ "fidget.nvim" }, "nv.plugins.status.fidget")
-  load({ "nvim-treesitter" }, "nv.plugins.language.ts")
-  load({ "marks.nvim" }, "nv.plugins.movement.marks")
-  load({ "conform.nvim" }, "nv.plugins.language.conform")
-  load({ "nvim-highlight-colors" }, "nv.plugins.misc.colors")
-  load({ "mini.clue", "mini.indentscope", "mini.surround" }, "nv.plugins.misc.mini")
+  load_plugins({ "fff.nvim" }, "nv.plugins.finders.fff")
+  load_plugins({ "mini.extra", "mini.pick" }, "nv.plugins.finders.minipick")
+  load_plugins({ "gitsigns.nvim" }, "nv.plugins.misc.gitsigns")
+  load_plugins({ "fidget.nvim" }, "nv.plugins.status.fidget")
+  load_plugins({ "nvim-treesitter" }, "nv.plugins.language.ts")
+  load_plugins({ "marks.nvim" }, "nv.plugins.movement.marks")
+  load_plugins({ "conform.nvim" }, "nv.plugins.language.conform")
+  load_plugins({ "nvim-highlight-colors" }, "nv.plugins.misc.colors")
+  load_plugins({ "mini.clue", "mini.indentscope", "mini.surround" }, "nv.plugins.misc.mini")
 end)
 
 -- Update with :packupdate, restore with :packupdate ++offline ++lockfile,
