@@ -62,14 +62,6 @@ return {
           delay = 0,
         },
 
-        mappings = {
-          object_scope = "ii",
-          object_scope_with_border = "ai",
-
-          goto_top = "[i",
-          goto_bottom = "]i",
-        },
-
         options = {
           border = "both",
           indent_at_cursor = true,
@@ -82,7 +74,7 @@ return {
 
     init = function()
       vim.api.nvim_create_autocmd("FileType", {
-        pattern = { "fzf", "help", "lazy" },
+        pattern = { "help", "lazy" },
         callback = function()
           vim.b.miniindentscope_disable = true
         end,

@@ -26,7 +26,12 @@ return {
       },
     })
 
-    vim.api.nvim_set_hl(0, "MiniPickMatchCurrent", { link = "Pmenu" })
+    vim.api.nvim_set_hl(0, "MiniPickMatchCurrent", { link = "PmenuSel" })
+    vim.api.nvim_create_autocmd("ColorScheme", {
+      callback = function()
+        vim.api.nvim_set_hl(0, "MiniPickMatchCurrent", { link = "PmenuSel" })
+      end,
+    })
 
     local keymap = vim.keymap
     keymap.set("n", "<leader>fs", function()

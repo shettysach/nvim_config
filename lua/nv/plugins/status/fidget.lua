@@ -1,7 +1,7 @@
 return {
   "j-hui/fidget.nvim",
   tag = "v1.4.5",
-  event = "VeryLazy",
+  event = "BufEnter",
 
   config = function()
     local fidget = require("fidget")
@@ -10,14 +10,16 @@ return {
       progress = {
         display = {
           render_limit = 10,
-          done_ttl = 2,
-          done_icon = "",
-          done_style = "Constant",
+
           progress_ttl = math.huge,
           progress_icon = { pattern = "dots", period = 1 },
-          progress_style = "LspInlayHint",
-          group_style = "Title",
-          icon_style = "Question",
+
+          done_ttl = 2,
+          done_icon = "",
+
+          -- group_style = "WarningMsg",
+          -- icon_style = "WarningMsg",
+
           priority = 30,
           skip_history = true,
         },
@@ -25,7 +27,6 @@ return {
 
       notification = {
         window = {
-          normal_hl = "LspInlayHint",
           winblend = 0,
           border = "none",
           zindex = 45,
@@ -35,12 +36,7 @@ return {
           y_padding = 1,
           align = "bottom",
           relative = "editor",
-        },
-      },
-
-      integration = {
-        ["nvim-tree"] = {
-          enable = true,
+          -- normal_hl = "LspInlayHint",
         },
       },
     })

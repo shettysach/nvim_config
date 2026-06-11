@@ -2,14 +2,20 @@ return {
   "A7Lavinraj/fyler.nvim",
   dependencies = { "nvim-mini/mini.icons" },
   branch = "main",
-  keys = {
-    { "-", "<CMD>Fyler<CR>", desc = "Open file explorer" },
-  },
+  keys = { { "-", "<CMD>Fyler<CR>", desc = "Open file explorer" } },
   lazy = false,
   opts = {
+    integrations = {
+      icon = "mini_icons",
+      winpick = function(_, onsubmit)
+        onsubmit(vim.api.nvim_get_current_win())
+      end,
+    },
     views = {
       finder = {
         default_explorer = true,
+        close_on_select = false,
+        follow_current_file = false,
         win = {
           win_opts = {
             concealcursor = "nvic",

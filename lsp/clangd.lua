@@ -1,13 +1,13 @@
 return {
-  cmd = { 'clangd' },
-  filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda' },
+  cmd = { "clangd" },
+  filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
   root_markers = {
-    '.clangd',
-    '.clang-tidy',
-    '.clang-format',
-    'compile_commands.json',
-    'compile_flags.txt',
-    'configure.ac',
+    ".clangd",
+    ".clang-tidy",
+    ".clang-format",
+    "compile_commands.json",
+    "compile_flags.txt",
+    "configure.ac",
   },
   capabilities = {
     textDocument = {
@@ -15,6 +15,6 @@ return {
         editsNearCursor = true,
       },
     },
-    offsetEncoding = { 'utf-8', 'utf-16' },
+    offsetEncoding = { "utf-8", "utf-16" },
   },
 }

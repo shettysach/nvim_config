@@ -1,10 +1,23 @@
 return {
-  --
+  { "raddari/last-color.nvim" },
+
+  {
+    "folke/tokyonight.nvim",
+    priority = 1000,
+    lazy = false,
+    opts = { style = "night" },
+  },
+
   -- {
-  --   "folke/tokyonight.nvim",
+  --   "rebelot/kanagawa.nvim",
   --   priority = 1000,
-  --   lazy = false,
-  --   opts = { style = "night" },
+  --   opts = {
+  --     theme = "dragon",
+  --     compile = true,
+  --
+  --     background = { dark = "dragon" },
+  --     colors = { theme = { all = { ui = { bg_gutter = "none" } } } },
+  --   },
   -- },
 
   -- {
@@ -16,16 +29,4 @@ return {
   --   priority = 1000,
   -- },
   --
-
-  {
-    "rebelot/kanagawa.nvim",
-    priority = 1000,
-    opts = {
-      theme = "dragon",
-      compile = true,
-
-      background = { dark = "dragon" },
-      colors = { theme = { all = { ui = { bg_gutter = "none" } } } },
-    },
-  },
 }

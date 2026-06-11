@@ -9,8 +9,8 @@ return {
         globalstatus = true,
         theme = "auto",
 
-        -- section_separators = { left = "", right = "" },
-        -- component_separators = { left = "", right = "" },
+        section_separators = { left = "", right = "" },
+        component_separators = { left = "", right = "" },
 
         -- section_separators = { left = "", right = "" },
         -- component_separators = { left = "│", right = "│" },
@@ -31,8 +31,7 @@ return {
             -- end,
 
             function()
-              local file = vim.api.nvim_buf_get_name(0)
-              return vim.fn.fnamemodify(file, ":p:h:t")
+              return vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":p:h:t")
               --   return vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
             end,
             color = { gui = "bold" },

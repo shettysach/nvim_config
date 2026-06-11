@@ -8,7 +8,7 @@ return {
       formatters_by_ft = {
         -- nix = { "alejandra" },
         nix = { "alejandra" },
-        -- nu = {"nufmt"};
+        nu = { "nufmt" },
 
         cpp = { "clang-format" },
         haskell = { "fourmolu", "stylish-haskell" },
