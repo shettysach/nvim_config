@@ -26,7 +26,7 @@ function M.setup()
       ["<Tab>"] = { "select_next", "fallback" },
       ["<S-Tab>"] = { "select_prev", "fallback" },
     },
-    snippets = { preset = "luasnip" },
+    snippets = { preset = "default" },
     appearance = {
       nerd_font_variant = "mono",
     },
