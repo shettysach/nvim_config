@@ -1,87 +1,81 @@
-return {
-  {
-    "echasnovski/mini.clue",
-    version = "*",
-    config = function()
-      local miniclue = require("mini.clue")
+local M = {}
 
-      miniclue.setup({
-        window = { delay = 0, config = { width = 35 } },
+function M.setup()
+  do
+    local miniclue = require("mini.clue")
 
-        triggers = {
-          -- Leader triggers
-          { mode = "n", keys = "<Leader>" },
-          { mode = "x", keys = "<Leader>" },
+    miniclue.setup({
+      window = { delay = 0, config = { width = 35 } },
 
-          -- Built-in completion
-          { mode = "i", keys = "<C-x>" },
+      triggers = {
+        -- Leader triggers
+        { mode = "n", keys = "<Leader>" },
+        { mode = "x", keys = "<Leader>" },
 
-          -- `g` key
-          { mode = "n", keys = "g" },
-          { mode = "x", keys = "g" },
+        -- Built-in completion
+        { mode = "i", keys = "<C-x>" },
 
-          -- Marks
-          { mode = "n", keys = "'" },
-          { mode = "n", keys = "`" },
-          { mode = "x", keys = "'" },
-          { mode = "x", keys = "`" },
+        -- `g` key
+        { mode = "n", keys = "g" },
+        { mode = "x", keys = "g" },
 
-          -- Registers
-          { mode = "n", keys = '"' },
-          { mode = "x", keys = '"' },
-          { mode = "i", keys = "<C-r>" },
-          { mode = "c", keys = "<C-r>" },
+        -- Marks
+        { mode = "n", keys = "'" },
+        { mode = "n", keys = "`" },
+        { mode = "x", keys = "'" },
+        { mode = "x", keys = "`" },
 
-          -- Window commands
-          { mode = "n", keys = "<C-w>" },
+        -- Registers
+        { mode = "n", keys = '"' },
+        { mode = "x", keys = '"' },
+        { mode = "i", keys = "<C-r>" },
+        { mode = "c", keys = "<C-r>" },
 
-          -- `z` key
-          { mode = "n", keys = "z" },
-          { mode = "x", keys = "z" },
-        },
+        -- Window commands
+        { mode = "n", keys = "<C-w>" },
 
-        clues = {
-          miniclue.gen_clues.builtin_completion(),
-          miniclue.gen_clues.g(),
-          miniclue.gen_clues.marks(),
-          miniclue.gen_clues.registers({ show_contents = true }),
-          miniclue.gen_clues.windows(),
-          miniclue.gen_clues.z(),
-        },
-      })
-    end,
-  },
+        -- `z` key
+        { mode = "n", keys = "z" },
+        { mode = "x", keys = "z" },
+      },
 
-  {
-    "echasnovski/mini.indentscope",
-    version = "*",
-    event = { "BufReadPre", "BufNewFile" },
-    config = function()
-      require("mini.indentscope").setup({
-        draw = {
-          delay = 0,
-        },
+      clues = {
+        miniclue.gen_clues.builtin_completion(),
+        miniclue.gen_clues.g(),
+        miniclue.gen_clues.marks(),
+        miniclue.gen_clues.registers({ show_contents = true }),
+        miniclue.gen_clues.windows(),
+        miniclue.gen_clues.z(),
+      },
+    })
+  end
 
-        options = {
-          border = "both",
-          indent_at_cursor = true,
-          try_as_border = false,
-        },
+  do
+    require("mini.indentscope").setup({
+      draw = {
+        delay = 0,
+      },
 
-        symbol = "│",
-      })
-    end,
+      options = {
+        border = "both",
+        indent_at_cursor = true,
+        try_as_border = false,
+      },
 
-    init = function()
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = { "help", "lazy" },
-        callback = function()
-          vim.b.miniindentscope_disable = true
-        end,
-      })
-    end,
-  },
+      symbol = "│",
+    })
+  end
 
-  { "echasnovski/mini.surround", version = "*", opts = {} },
-  -- { "tpope/vim-surround" },
-}
+  do
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = { "help", "lazy" },
+      callback = function()
+        vim.b.miniindentscope_disable = true
+      end,
+    })
+  end
+
+  require("mini.surround").setup({})
+end
+
+return M

@@ -22,17 +22,16 @@ local languages = {
 }
 
 ---@diagnostic disable: missing-fields
-return {
-  "nvim-treesitter/nvim-treesitter",
-  event = "VeryLazy",
-  build = ":TSUpdate",
-  config = function()
-    local treesitter = require("nvim-treesitter")
-    -- treesitter.install(languages)
-    treesitter.setup({
-      highlight = { enable = true },
-      indent = { enable = true },
-      autotag = { enable = true },
-    })
-  end,
-}
+local M = {}
+
+function M.setup()
+  local treesitter = require("nvim-treesitter")
+  -- treesitter.install(languages)
+  treesitter.setup({
+    highlight = { enable = true },
+    indent = { enable = true },
+    autotag = { enable = true },
+  })
+end
+
+return M

@@ -1,7 +1,7 @@
-return {
-  "lewis6991/gitsigns.nvim",
-  event = "BufEnter",
-  opts = {
+local M = {}
+
+function M.setup()
+  require("gitsigns").setup({
     sign_priority = 100,
 
     on_attach = function(bufnr)
@@ -69,5 +69,7 @@ return {
       -- Text object
       map({ "o", "x" }, "ih", gitsigns.select_hunk, { desc = "Select hunk" })
     end,
-  },
-}
+  })
+end
+
+return M

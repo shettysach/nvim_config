@@ -1,0 +1,112 @@
+{
+  "plugins": {
+    "LuaSnip": {
+      "rev": "642b0c595e11608b4c18219e93b88d7637af27bc",
+      "src": "https://github.com/L3MON4D3/LuaSnip.git",
+      "version": "2.0.0 - 3.0.0"
+    },
+    "blink.cmp": {
+      "rev": "78336bc89ee5365633bcf754d93df01678b5c08f",
+      "src": "https://github.com/saghen/blink.cmp.git",
+      "version": "1.0.0 - 2.0.0"
+    },
+    "canola-collection": {
+      "rev": "8566c09080c3084db1ffba21dec53e2b4235daed",
+      "src": "https://github.com/barrettruth/canola-collection.git"
+    },
+    "canola.nvim": {
+      "rev": "99da9f9fefe01f9f051aa022a1fa6a154b148f19",
+      "src": "https://github.com/barrettruth/canola.nvim.git",
+      "version": "'canola'"
+    },
+    "conform.nvim": {
+      "rev": "619363c30309d29ffa631e67c8183f2a72caa373",
+      "src": "https://github.com/stevearc/conform.nvim.git"
+    },
+    "fff.nvim": {
+      "rev": "ec57eb02a679737dbf4f88520a0a79cc62eb1664",
+      "src": "https://github.com/dmtrKovalenko/fff.nvim.git"
+    },
+    "fidget.nvim": {
+      "rev": "ef99df04a1c53a453602421bc0f756997edc8289",
+      "src": "https://github.com/j-hui/fidget.nvim.git",
+      "version": "'v1.4.5'"
+    },
+    "gitsigns.nvim": {
+      "rev": "25050e4ed39e628282831d4cbecb1850454ce915",
+      "src": "https://github.com/lewis6991/gitsigns.nvim.git"
+    },
+    "last-color.nvim": {
+      "rev": "000e3e50047602f4b9725dd33aff631018592595",
+      "src": "https://github.com/raddari/last-color.nvim.git"
+    },
+    "lazydev.nvim": {
+      "rev": "ff2cbcba459b637ec3fd165a2be59b7bbaeedf0d",
+      "src": "https://github.com/folke/lazydev.nvim.git"
+    },
+    "lualine.nvim": {
+      "rev": "221ce6b2d999187044529f49da6554a92f740a96",
+      "src": "https://github.com/nvim-lualine/lualine.nvim.git"
+    },
+    "luvit-meta": {
+      "rev": "cc9b2d412d2fbd30b94a70cfc214c2a3be27a0a2",
+      "src": "https://github.com/Bilal2453/luvit-meta.git"
+    },
+    "marks.nvim": {
+      "rev": "f353e8c08c50f39e99a9ed474172df7eddd89b72",
+      "src": "https://github.com/chentoast/marks.nvim.git"
+    },
+    "mini.clue": {
+      "rev": "d96fef9db8fcb38c058f2edb2eeb69cb8b2d462a",
+      "src": "https://github.com/echasnovski/mini.clue.git",
+      "version": ">=0.0.0"
+    },
+    "mini.extra": {
+      "rev": "eb21c1117207d3aa1ae532c666c692e94909087e",
+      "src": "https://github.com/nvim-mini/mini.extra.git"
+    },
+    "mini.icons": {
+      "rev": "284509648db084c5e40a31afa9abb9887c49e04a",
+      "src": "https://github.com/nvim-mini/mini.icons.git"
+    },
+    "mini.indentscope": {
+      "rev": "0308f949f31769e509696af5d5f91cebb2159c69",
+      "src": "https://github.com/echasnovski/mini.indentscope.git",
+      "version": ">=0.0.0"
+    },
+    "mini.pick": {
+      "rev": "6b7974543b17cf2e294993fc3d8545a342258232",
+      "src": "https://github.com/nvim-mini/mini.pick.git",
+      "version": ">=0.0.0"
+    },
+    "mini.surround": {
+      "rev": "88c52297ed3e69ecf9f8652837888ecc727a28ee",
+      "src": "https://github.com/echasnovski/mini.surround.git",
+      "version": ">=0.0.0"
+    },
+    "nvim-autopairs": {
+      "rev": "7b9923abad60b903ece7c52940e1321d39eccc79",
+      "src": "https://github.com/windwp/nvim-autopairs.git"
+    },
+    "nvim-highlight-colors": {
+      "rev": "e4c7af0211866162d999ce0bdd6a029302e19139",
+      "src": "https://github.com/brenoprata10/nvim-highlight-colors.git"
+    },
+    "nvim-treesitter": {
+      "rev": "4916d6592ede8c07973490d9322f187e07dfefac",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter.git"
+    },
+    "plenary.nvim": {
+      "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
+      "src": "https://github.com/nvim-lua/plenary.nvim.git"
+    },
+    "tokyonight.nvim": {
+      "rev": "cdc07ac78467a233fd62c493de29a17e0cf2b2b6",
+      "src": "https://github.com/folke/tokyonight.nvim.git"
+    },
+    "transparent.nvim": {
+      "rev": "8ac59883de84e9cd1850ea25cf087031c5ba7d54",
+      "src": "https://github.com/xiyaowong/transparent.nvim.git"
+    }
+  }
+}

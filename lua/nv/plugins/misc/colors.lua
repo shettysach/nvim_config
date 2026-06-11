@@ -1,5 +1,7 @@
-return {
-  "brenoprata10/nvim-highlight-colors",
-  cmd = "HighlightColors",
-  opts = {},
-}
+local M = {}
+
+function M.setup()
+  require("nvim-highlight-colors").setup({})
+end
+
+return M

@@ -1,25 +1,9 @@
-return {
-  "saghen/blink.cmp",
-  event = "InsertEnter",
-  -- optional: provides snippets for the snippet source
-  dependencies = {
-    {
-      "L3MON4D3/LuaSnip",
-      version = "v2.*",
-      build = "make install_jsregexp",
-    },
-  },
+local M = {}
 
-  -- use a release tag to download pre-built binaries
-  version = "1.*",
-  -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
-  -- build = 'cargo build --release',
-  -- If you use nix, you can build from source using latest nightly rust with:
-  -- build = 'nix run .#build-plugin',
-
+function M.setup()
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
-  opts = {
+  local opts = {
     -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
     -- 'super-tab' for mappings similar to vscode (tab to accept)
     -- 'enter' for enter to accept
@@ -76,15 +60,14 @@ return {
     --
     -- See the fuzzy documentation for more information
     fuzzy = { implementation = "prefer_rust_with_warning" },
-  },
-  opts_extend = { "sources.default" },
+  }
 
-  config = function(_, opts)
-    require("blink.cmp").setup(opts)
+  require("blink.cmp").setup(opts)
 
-    local capabilities = require("blink.cmp").get_lsp_capabilities()
-    vim.lsp.config("*", {
-      capabilities = capabilities,
-    })
-  end,
-}
+  local capabilities = require("blink.cmp").get_lsp_capabilities()
+  vim.lsp.config("*", {
+    capabilities = capabilities,
+  })
+end
+
+return M

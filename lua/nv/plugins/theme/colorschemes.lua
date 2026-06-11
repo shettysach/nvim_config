@@ -1,32 +1,29 @@
-return {
-  { "raddari/last-color.nvim" },
+local M = {}
 
-  {
-    "folke/tokyonight.nvim",
-    priority = 1000,
-    lazy = false,
-    opts = { style = "night" },
-  },
+function M.setup()
+  require("tokyonight").setup({ style = "night" })
+end
 
-  -- {
-  --   "rebelot/kanagawa.nvim",
-  --   priority = 1000,
-  --   opts = {
-  --     theme = "dragon",
-  --     compile = true,
-  --
-  --     background = { dark = "dragon" },
-  --     colors = { theme = { all = { ui = { bg_gutter = "none" } } } },
-  --   },
-  -- },
+return M
 
-  -- {
-  --   "thesimonho/kanagawa-paper.nvim",
-  --   opts = {
-  --     cache = false,
-  --   },
-  --   lazy = false,
-  --   priority = 1000,
-  -- },
-  --
-}
+-- {
+--   "rebelot/kanagawa.nvim",
+--   priority = 1000,
+--   opts = {
+--     theme = "dragon",
+--     compile = true,
+--
+--     background = { dark = "dragon" },
+--     colors = { theme = { all = { ui = { bg_gutter = "none" } } } },
+--   },
+-- },
+
+-- {
+--   "thesimonho/kanagawa-paper.nvim",
+--   opts = {
+--     cache = false,
+--   },
+--   lazy = false,
+--   priority = 1000,
+-- },
+--
