@@ -2,40 +2,36 @@ local gh = function(repo)
   return "https://github.com/" .. repo .. ".git"
 end
 
-local function notify_error(message)
-  vim.schedule(function()
-    vim.notify(message, vim.log.levels.ERROR)
-  end)
-end
+local hooks = {
+  ["fff.nvim"] = function()
+    require("fff.download").download_or_build_binary()
+  end,
+
+  ["nvim-treesitter"] = function()
+    vim.cmd.TSUpdate()
+  end,
+}
 
 vim.api.nvim_create_autocmd("PackChanged", {
   group = vim.api.nvim_create_augroup("NvPackHooks", { clear = true }),
   callback = function(event)
     local name = event.data.spec.name
     local kind = event.data.kind
+
     if kind ~= "install" and kind ~= "update" then
       return
     end
 
-    if name == "fff.nvim" then
-      if not event.data.active then
-        vim.cmd.packadd(name)
-      end
-      local ok, err = pcall(function()
-        require("fff.download").download_or_build_binary()
-      end)
-      if not ok then
-        notify_error("fff.nvim hook failed:\n" .. err)
-      end
-    elseif name == "nvim-treesitter" then
-      if not event.data.active then
-        vim.cmd.packadd(name)
-      end
-      local ok, err = pcall(vim.cmd.TSUpdate)
-      if not ok then
-        notify_error("nvim-treesitter hook failed:\n" .. err)
-      end
+    local hook = hooks[name]
+    if not hook then
+      return
     end
+
+    if not event.data.active then
+      vim.cmd.packadd(name)
+    end
+
+    hook()
   end,
 })
 
@@ -63,58 +59,12 @@ vim.pack.add({
   gh("windwp/nvim-autopairs"),
   gh("folke/lazydev.nvim"),
   gh("Bilal2453/luvit-meta"),
-}, { load = function() end })
-
-local function load_plugins(names, module)
-  for _, name in ipairs(names) do
-    vim.cmd.packadd(name)
-  end
-  if module then
-    require(module).setup()
-  end
-end
-
-load_plugins({ "last-color.nvim", "tokyonight.nvim" }, "nv.plugins.theme.colorschemes")
-load_plugins({ "transparent.nvim" }, "nv.plugins.theme.transparent")
-load_plugins({ "mini.icons" }, "nv.plugins.misc.icons")
-load_plugins({ "lualine.nvim" }, "nv.plugins.status.lualine")
-
-vim.g.canola = { columns = { "git_status", "icon" } }
-vim.g.canola_git = {
-  show = { untracked = true, ignored = true },
-  format = "compact",
-}
-load_plugins({ "canola.nvim", "canola-collection" }, "nv.plugins.file.canola")
-
-load_plugins({ "blink.cmp" }, "nv.plugins.language.blink-cmp")
-
-vim.api.nvim_create_autocmd("InsertEnter", {
-  once = true,
-  callback = function()
-    load_plugins({ "nvim-autopairs" }, "nv.plugins.misc.autopairs")
-  end,
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-  once = true,
-  pattern = "lua",
-  callback = function()
-    load_plugins({ "luvit-meta", "lazydev.nvim" }, "nv.plugins.lazydev")
-  end,
-})
-
-vim.schedule(function()
-  load_plugins({ "fff.nvim" }, "nv.plugins.finders.fff")
-  load_plugins({ "mini.extra", "mini.pick" }, "nv.plugins.finders.minipick")
-  load_plugins({ "gitsigns.nvim" }, "nv.plugins.misc.gitsigns")
-  load_plugins({ "fidget.nvim" }, "nv.plugins.status.fidget")
-  load_plugins({ "nvim-treesitter" }, "nv.plugins.language.ts")
-  load_plugins({ "marks.nvim" }, "nv.plugins.movement.marks")
-  load_plugins({ "conform.nvim" }, "nv.plugins.language.conform")
-  load_plugins({ "nvim-highlight-colors" }, "nv.plugins.misc.colors")
-  load_plugins({ "mini.clue", "mini.indentscope", "mini.surround" }, "nv.plugins.misc.mini")
-end)
+require("nv.plugins.ui")
+require("nv.plugins.navigation")
+require("nv.plugins.editing")
+require("nv.plugins.language")
 
 -- Update with :packupdate, restore with :packupdate ++offline ++lockfile,
 -- and remove inactive plugins with :packdel ++all.
-require("nv.theming")
