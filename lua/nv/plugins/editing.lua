@@ -25,7 +25,7 @@ vim.schedule(function()
       yaml = { "prettierd" },
       markdown = { "prettierd" },
       lua = { "stylua" },
-      python = { "black" },
+      -- python = { "black" },
     },
     format_on_save = {
       lsp_fallback = true,

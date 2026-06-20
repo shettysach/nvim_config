@@ -1,10 +1,3 @@
-vim.g.canola = { columns = { "git_status", "icon" } }
-vim.g.canola_git = {
-  show = { untracked = true, ignored = true },
-  format = "compact",
-}
-vim.keymap.set("n", "-", "<CMD>Canola<CR>")
-
 vim.g.fff = {
   lazy_sync = true,
   debug = {
@@ -14,6 +7,42 @@ vim.g.fff = {
   prompt = "❯ ",
   layout = { prompt_position = "top" },
 }
+
+--
+
+local fyler = require("fyler")
+fyler.setup({
+  integrations = {
+    icon = "mini_icons",
+    winpick = function(_, onsubmit)
+      onsubmit(vim.api.nvim_get_current_win())
+    end,
+  },
+  extensions = { git = { enabled = true } },
+  views = {
+    finder = {
+      default_explorer = true,
+      close_on_select = false,
+      follow_current_file = true,
+      win = {
+        win_opts = {
+          concealcursor = "nvic",
+          conceallevel = 3,
+          cursorline = false,
+          number = true,
+          relativenumber = true,
+          winhighlight = "Normal:FylerNormal,NormalNC:FylerNormalNC",
+          wrap = false,
+          signcolumn = "yes",
+        },
+      },
+    },
+  },
+})
+
+vim.keymap.set("n", "-", "<CMD>Fyler<CR>")
+
+--
 
 vim.schedule(function()
   local fff = require("fff")
@@ -26,6 +55,8 @@ vim.schedule(function()
   vim.keymap.set("n", "<leader>fc", function()
     fff.live_grep({ query = vim.fn.expand("<cword>") })
   end, { desc = "Search current word" })
+
+  ----
 
   local minipick = require("mini.pick")
   local extra = require("mini.extra")
@@ -44,13 +75,6 @@ vim.schedule(function()
         }
       end,
     },
-  })
-
-  vim.api.nvim_set_hl(0, "MiniPickMatchCurrent", { link = "PmenuSel" })
-  vim.api.nvim_create_autocmd("ColorScheme", {
-    callback = function()
-      vim.api.nvim_set_hl(0, "MiniPickMatchCurrent", { link = "PmenuSel" })
-    end,
   })
 
   vim.keymap.set("n", "<leader>fs", function()

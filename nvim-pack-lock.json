@@ -5,21 +5,12 @@
       "src": "https://github.com/saghen/blink.cmp.git",
       "version": "1.0.0 - 2.0.0"
     },
-    "canola-collection": {
-      "rev": "8566c09080c3084db1ffba21dec53e2b4235daed",
-      "src": "https://github.com/barrettruth/canola-collection.git"
-    },
-    "canola.nvim": {
-      "rev": "99da9f9fefe01f9f051aa022a1fa6a154b148f19",
-      "src": "https://github.com/barrettruth/canola.nvim.git",
-      "version": "'canola'"
-    },
     "conform.nvim": {
       "rev": "619363c30309d29ffa631e67c8183f2a72caa373",
       "src": "https://github.com/stevearc/conform.nvim.git"
     },
     "fff.nvim": {
-      "rev": "ec57eb02a679737dbf4f88520a0a79cc62eb1664",
+      "rev": "e7b7fe2707ed2349b077846fb5da7102145ef5a0",
       "src": "https://github.com/dmtrKovalenko/fff.nvim.git"
     },
     "fidget.nvim": {
@@ -27,13 +18,14 @@
       "src": "https://github.com/j-hui/fidget.nvim.git",
       "version": "'v1.4.5'"
     },
+    "fyler.nvim": {
+      "rev": "e87911e6c21d099225063f5aa672e00f6dbb5976",
+      "src": "https://github.com/A7Lavinraj/fyler.nvim.git",
+      "version": "'e87911e6c21d099225063f5aa672e00f6dbb5976'"
+    },
     "gitsigns.nvim": {
       "rev": "25050e4ed39e628282831d4cbecb1850454ce915",
       "src": "https://github.com/lewis6991/gitsigns.nvim.git"
-    },
-    "last-color.nvim": {
-      "rev": "000e3e50047602f4b9725dd33aff631018592595",
-      "src": "https://github.com/raddari/last-color.nvim.git"
     },
     "lazydev.nvim": {
       "rev": "ff2cbcba459b637ec3fd165a2be59b7bbaeedf0d",
@@ -61,7 +53,7 @@
       "src": "https://github.com/nvim-mini/mini.extra.git"
     },
     "mini.icons": {
-      "rev": "284509648db084c5e40a31afa9abb9887c49e04a",
+      "rev": "ac38c983aed0a2bd32a65ca3e2348e12e58ca292",
       "src": "https://github.com/nvim-mini/mini.icons.git"
     },
     "mini.indentscope": {
@@ -87,21 +79,17 @@
       "rev": "e4c7af0211866162d999ce0bdd6a029302e19139",
       "src": "https://github.com/brenoprata10/nvim-highlight-colors.git"
     },
-    "nvim-treesitter": {
-      "rev": "4916d6592ede8c07973490d9322f187e07dfefac",
-      "src": "https://github.com/nvim-treesitter/nvim-treesitter.git"
-    },
-    "plenary.nvim": {
-      "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
-      "src": "https://github.com/nvim-lua/plenary.nvim.git"
-    },
     "tokyonight.nvim": {
       "rev": "cdc07ac78467a233fd62c493de29a17e0cf2b2b6",
       "src": "https://github.com/folke/tokyonight.nvim.git"
     },
     "transparent.nvim": {
-      "rev": "8ac59883de84e9cd1850ea25cf087031c5ba7d54",
+      "rev": "e00ca1cf09caef575edf8da7e5a8b9193893b4c7",
       "src": "https://github.com/xiyaowong/transparent.nvim.git"
+    },
+    "tree-sitter-manager.nvim": {
+      "rev": "ae305699da5e97b6cffdd5cc6f6045b1b0bd26ea",
+      "src": "https://github.com/romus204/tree-sitter-manager.nvim.git"
     }
   }
 }

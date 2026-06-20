@@ -1,9 +1,7 @@
 require("transparent").setup({})
 
 require("tokyonight").setup({ style = "night" })
-
-local theme = require("last-color").recall() or "default"
-vim.cmd.colorscheme(theme)
+vim.cmd.colorscheme("tokyonight")
 
 vim.cmd(
   [[set wildignore+=blue.vim,darkblue.vim,delek.vim,desert.vim,elflord.vim,evening.vim,habamax.vim,industry.vim,koehler.vim,lunaperche.vim,morning.vim,murphy.vim,pablo.vim,peachpuff.vim,quiet.vim,retrobox.vim,ron.vim,shine.vim,slate.vim,sorbet.vim,torte.vim,wildcharm.vim,zaibatsu.vim,zellner.vim,unokai.vim,vim.vim]]
@@ -11,48 +9,48 @@ vim.cmd(
 
 require("mini.icons").setup({})
 
-require("lualine").setup({
-  options = {
-    globalstatus = true,
-    theme = "auto",
-  },
-  sections = {
-    lualine_a = { { "mode", color = { gui = "bold" } } },
-    lualine_z = { { "location", color = { gui = "bold" } } },
-    lualine_b = {
-      "branch",
-      "diff",
-      {
-        "diagnostics",
-        symbols = {
-          error = "E",
-          warn = "W",
-          info = "I",
-          hint = "H",
+vim.schedule(function()
+  require("lualine").setup({
+    options = {
+      globalstatus = true,
+      theme = "auto",
+    },
+    sections = {
+      lualine_a = { { "mode", color = { gui = "bold" } } },
+      lualine_z = { { "location", color = { gui = "bold" } } },
+      lualine_b = {
+        "branch",
+        "diff",
+        {
+          "diagnostics",
+          symbols = {
+            error = "E",
+            warn = "W",
+            info = "I",
+            hint = "H",
+          },
         },
       },
     },
-  },
-  tabline = {
-    lualine_a = {
-      {
-        function()
-          return vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":p:h:t")
-        end,
-        color = { gui = "bold" },
+    tabline = {
+      lualine_a = {
+        {
+          function()
+            return vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":p:h:t")
+          end,
+          color = { gui = "bold" },
+        },
+      },
+      lualine_b = {
+        {
+          "tabs",
+          mode = 1,
+          max_length = vim.o.columns,
+        },
       },
     },
-    lualine_b = {
-      {
-        "tabs",
-        mode = 1,
-        max_length = vim.o.columns,
-      },
-    },
-  },
-})
+  })
 
-vim.schedule(function()
   require("fidget").setup({
     progress = {
       display = {

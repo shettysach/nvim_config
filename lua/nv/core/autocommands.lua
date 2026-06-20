@@ -2,9 +2,8 @@ local autocmd = vim.api.nvim_create_autocmd
 
 autocmd({ "ColorScheme" }, {
   callback = function()
-    vim.cmd([[highlight! link LspInlayHint DiagnosticHint]])
-    vim.cmd([[highlight! link LineNr Type]])
-    vim.cmd([[highlight! link FylerFSDirectoryIcon Directory]])
+    vim.api.nvim_set_hl(0, "MiniPickMatchCurrent", { link = "PmenuSel" })
+    vim.api.nvim_set_hl(0, "LspInlayHint", { link = "DiagnosticHint" })
   end,
 })
 

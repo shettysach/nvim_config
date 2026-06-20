@@ -24,6 +24,10 @@ vim.lsp.config("*", {
   capabilities = require("blink.cmp").get_lsp_capabilities(),
 })
 
+vim.keymap.set("n", "<leader>i", function()
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))
+end, { desc = "Toggle inlay hints" })
+
 vim.api.nvim_create_autocmd("FileType", {
   once = true,
   pattern = "lua",
@@ -36,10 +40,31 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
-vim.schedule(function()
-  require("nvim-treesitter").setup({
-    highlight = { enable = true },
-    indent = { enable = true },
-    autotag = { enable = true },
+-- TSManager
+
+---@diagnostic disable-next-line: unused-local
+local langs = {
+  "cpp",
+  "haskell",
+  "nix",
+  "nu",
+  "odin",
+  "python",
+  "rust",
+  "toml",
+  "zig",
+}
+
+vim.api.nvim_create_user_command("TSManager", function()
+  vim.api.nvim_del_user_command("TSManager")
+
+  vim.cmd.packadd("tree-sitter-manager.nvim")
+  require("tree-sitter-manager").setup({
+    -- ensure_installed = langs,
+    auto_install = false,
+    highlight = false,
+    nerdfont = false,
   })
-end)
+
+  vim.cmd.TSManager()
+end, {})

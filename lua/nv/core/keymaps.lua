@@ -6,13 +6,6 @@ local keymap = vim.keymap
 
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 
--- WINDOW
--- keymap.set("n", "<C-h>", "<cmd>wincmd h<CR>")
--- keymap.set("n", "<C-j>", "<cmd>wincmd j<CR>")
--- keymap.set("n", "<C-k>", "<cmd>wincmd k<CR>")
--- keymap.set("n", "<C-l>", "<cmd>wincmd l<CR>")
--- keymap.set('n', '<C-i>', '<C-i>', { noremap = true })
---
 -- TABS
 keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" })
 keymap.set("n", "<leader>tq", "<cmd>tabclose<CR>", { desc = "Close current tab" })
@@ -25,10 +18,6 @@ keymap.set("n", "<leader>p", function()
 end, { desc = "Print current buffer full path" })
 
 -- INLAY HINTS
-keymap.set("n", "<leader>i", function()
-  lsp.inlay_hint.enable(not lsp.inlay_hint.is_enabled({}))
-end, { desc = "Toggle inlay hints" })
-
 -- TRANSPARENCY
 keymap.set("n", "<leader>ct", "<cmd>TransparentToggle<CR>", { desc = "Transparency" })
 
