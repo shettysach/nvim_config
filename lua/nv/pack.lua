@@ -7,8 +7,8 @@ vim.pack.add({
   gh("nvim-mini/mini.icons"),
   gh("nvim-lualine/lualine.nvim"),
 
-  { src = gh("A7Lavinraj/fyler.nvim"), version = "e87911e6c21d099225063f5aa672e00f6dbb5976" },
-  -- { src = gh("A7Lavinraj/fyler.nvim") },
+  -- { src = gh("A7Lavinraj/fyler.nvim"), version = "e87911e6c21d099225063f5aa672e00f6dbb5976" },
+  { src = gh("A7Lavinraj/fyler.nvim") },
 
   gh("dmtrKovalenko/fff.nvim"),
   { src = gh("nvim-mini/mini.pick"), version = vim.version.range("*") },
@@ -16,7 +16,7 @@ vim.pack.add({
 
   { src = gh("saghen/blink.cmp"), version = vim.version.range("1.x") },
   gh("lewis6991/gitsigns.nvim"),
-  { src = gh("j-hui/fidget.nvim"), version = "v1.4.5" },
+  gh("j-hui/fidget.nvim"),
   gh("chentoast/marks.nvim"),
   gh("stevearc/conform.nvim"),
   gh("brenoprata10/nvim-highlight-colors"),
@@ -26,7 +26,6 @@ vim.pack.add({
   { src = gh("echasnovski/mini.surround"), version = vim.version.range("*") },
   gh("windwp/nvim-autopairs"),
   gh("folke/lazydev.nvim"),
-  gh("Bilal2453/luvit-meta"),
 })
 
 vim.pack.add({ gh("romus204/tree-sitter-manager.nvim") }, {

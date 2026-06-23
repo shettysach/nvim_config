@@ -10,21 +10,19 @@
       "src": "https://github.com/stevearc/conform.nvim.git"
     },
     "fff.nvim": {
-      "rev": "e7b7fe2707ed2349b077846fb5da7102145ef5a0",
+      "rev": "957f222da76f120868defdf9e7204309c3800e5e",
       "src": "https://github.com/dmtrKovalenko/fff.nvim.git"
     },
     "fidget.nvim": {
-      "rev": "ef99df04a1c53a453602421bc0f756997edc8289",
-      "src": "https://github.com/j-hui/fidget.nvim.git",
-      "version": "'v1.4.5'"
+      "rev": "6f793b2bcd2d35e201c09520f698bb763220908a",
+      "src": "https://github.com/j-hui/fidget.nvim.git"
     },
     "fyler.nvim": {
-      "rev": "e87911e6c21d099225063f5aa672e00f6dbb5976",
-      "src": "https://github.com/A7Lavinraj/fyler.nvim.git",
-      "version": "'e87911e6c21d099225063f5aa672e00f6dbb5976'"
+      "rev": "638c0e10af7802ab23598573f01452334ca1ff5b",
+      "src": "https://github.com/A7Lavinraj/fyler.nvim.git"
     },
     "gitsigns.nvim": {
-      "rev": "25050e4ed39e628282831d4cbecb1850454ce915",
+      "rev": "2038c666bd9d8a0b7349a0b6ee00dc83104b9ecf",
       "src": "https://github.com/lewis6991/gitsigns.nvim.git"
     },
     "lazydev.nvim": {
@@ -44,30 +42,30 @@
       "src": "https://github.com/chentoast/marks.nvim.git"
     },
     "mini.clue": {
-      "rev": "d96fef9db8fcb38c058f2edb2eeb69cb8b2d462a",
+      "rev": "62e9e38c3dc4b7d429f1b6e28d96f96cdff71132",
       "src": "https://github.com/echasnovski/mini.clue.git",
       "version": ">=0.0.0"
     },
     "mini.extra": {
-      "rev": "eb21c1117207d3aa1ae532c666c692e94909087e",
+      "rev": "e5ecf197f8954d002cb9e85b3715851e2c8d3cd5",
       "src": "https://github.com/nvim-mini/mini.extra.git"
     },
     "mini.icons": {
-      "rev": "ac38c983aed0a2bd32a65ca3e2348e12e58ca292",
+      "rev": "e56797f90192d81f1fda02e662fc3e8e3d775027",
       "src": "https://github.com/nvim-mini/mini.icons.git"
     },
     "mini.indentscope": {
-      "rev": "0308f949f31769e509696af5d5f91cebb2159c69",
+      "rev": "d3f955f09b1a05d25d5a7740338fba2baaee41a3",
       "src": "https://github.com/echasnovski/mini.indentscope.git",
       "version": ">=0.0.0"
     },
     "mini.pick": {
-      "rev": "6b7974543b17cf2e294993fc3d8545a342258232",
+      "rev": "8c1f75f8ddd8c9f75d07ed2ab5718d2c3cb65a66",
       "src": "https://github.com/nvim-mini/mini.pick.git",
       "version": ">=0.0.0"
     },
     "mini.surround": {
-      "rev": "88c52297ed3e69ecf9f8652837888ecc727a28ee",
+      "rev": "580e4cb98c5900d9fe743865fb5a5b2178b4ab18",
       "src": "https://github.com/echasnovski/mini.surround.git",
       "version": ">=0.0.0"
     },

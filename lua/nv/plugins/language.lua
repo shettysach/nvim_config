@@ -28,18 +28,6 @@ vim.keymap.set("n", "<leader>i", function()
   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))
 end, { desc = "Toggle inlay hints" })
 
-vim.api.nvim_create_autocmd("FileType", {
-  once = true,
-  pattern = "lua",
-  callback = function()
-    require("lazydev").setup({
-      library = {
-        { path = "luvit-meta/library", words = { "vim%.uv" } },
-      },
-    })
-  end,
-})
-
 -- TSManager
 
 ---@diagnostic disable-next-line: unused-local

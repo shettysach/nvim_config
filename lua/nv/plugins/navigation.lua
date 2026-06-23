@@ -14,33 +14,26 @@ local fyler = require("fyler")
 fyler.setup({
   integrations = {
     icon = "mini_icons",
-    winpick = function(_, onsubmit)
-      onsubmit(vim.api.nvim_get_current_win())
-    end,
+    -- winpick = function(_, onsubmit) onsubmit(vim.api.nvim_get_current_win()) end,
   },
-  extensions = { git = { enabled = true } },
-  views = {
-    finder = {
-      default_explorer = true,
-      close_on_select = false,
-      follow_current_file = true,
-      win = {
-        win_opts = {
-          concealcursor = "nvic",
-          conceallevel = 3,
-          cursorline = false,
-          number = true,
-          relativenumber = true,
-          winhighlight = "Normal:FylerNormal,NormalNC:FylerNormalNC",
-          wrap = false,
-          signcolumn = "yes",
-        },
-      },
+  extensions = { git = { enabled = true, inline = false } },
+
+  kind = "split_left_most",
+
+  win_opts = {
+    number = true,
+    relativenumber = true,
+    cursorline = true,
+  },
+  ui = {
+    hidden_items = {
+      switches = { "dotfiles" },
+      always_hidden = { "__pycache__" },
     },
   },
 })
 
-vim.keymap.set("n", "-", "<CMD>Fyler<CR>")
+vim.keymap.set("n", "-", fyler.open)
 
 --
 

@@ -18,10 +18,10 @@
         devShells.default = pkgs.mkShell {
           name = "lua";
           buildInputs = with pkgs; [
-            lua-language-server
-            cmake
-            stylua
             tree-sitter
+            cmake
+            lua-language-server
+            stylua
           ];
         };
       }
