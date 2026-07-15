@@ -12,14 +12,9 @@ vim.g.fff = {
 
 local fyler = require("fyler")
 fyler.setup({
-  integrations = {
-    icon = "mini_icons",
-    -- winpick = function(_, onsubmit) onsubmit(vim.api.nvim_get_current_win()) end,
-  },
-  extensions = { git = { enabled = true, inline = false } },
+  integrations = { icon = "mini_icons" },
 
-  kind = "split_left_most",
-
+  kind = "replace",
   win_opts = {
     number = true,
     relativenumber = true,
@@ -34,8 +29,7 @@ fyler.setup({
 })
 
 vim.keymap.set("n", "-", fyler.open)
-
---
+-- vim.keymap.set("n", "=", function() fyler.open({ kind = "floating" }) end)
 
 vim.schedule(function()
   local fff = require("fff")
@@ -73,12 +67,15 @@ vim.schedule(function()
   vim.keymap.set("n", "<leader>fs", function()
     extra.pickers.lsp({ scope = "document_symbol" })
   end, { desc = "Fuzzy find LSP symbols" })
+
   vim.keymap.set("n", "<leader>fm", function()
     extra.pickers.marks()
   end, { desc = "Fuzzy find marks" })
+
   vim.keymap.set("n", "<leader>fd", function()
     extra.pickers.diagnostic()
   end, { desc = "Fuzzy find diagnostics" })
+
   vim.keymap.set("n", "<leader>cc", function()
     extra.pickers.colorschemes()
   end, { desc = "Colorschemes" })

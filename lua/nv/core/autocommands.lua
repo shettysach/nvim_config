@@ -9,7 +9,7 @@ autocmd({ "ColorScheme" }, {
 
 autocmd({ "TermOpen" }, {
   callback = function()
-    vim.cmd([[startinsert]])
+    vim.cmd("startinser")
   end,
 })
 

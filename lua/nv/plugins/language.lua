@@ -25,22 +25,28 @@ vim.lsp.config("*", {
 })
 
 vim.keymap.set("n", "<leader>i", function()
-  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 end, { desc = "Toggle inlay hints" })
 
 -- TSManager
 
----@diagnostic disable-next-line: unused-local
 local langs = {
+  "c",
   "cpp",
-  "haskell",
-  "nix",
-  "nu",
-  "odin",
-  "python",
   "rust",
+  "odin",
+
+  "python",
+  "haskell",
+
+  "nix",
   "toml",
-  "zig",
+  "json",
+  "vimdoc",
+
+  "bash",
+  "zsh",
+  "nu",
 }
 
 vim.api.nvim_create_user_command("TSManager", function()
@@ -48,7 +54,7 @@ vim.api.nvim_create_user_command("TSManager", function()
 
   vim.cmd.packadd("tree-sitter-manager.nvim")
   require("tree-sitter-manager").setup({
-    -- ensure_installed = langs,
+    ensure_installed = langs,
     auto_install = false,
     highlight = false,
     nerdfont = false,

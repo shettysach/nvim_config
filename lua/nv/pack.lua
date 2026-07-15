@@ -4,6 +4,7 @@ end
 
 vim.pack.add({
   gh("folke/tokyonight.nvim"),
+  gh("xiyaowong/transparent.nvim"),
   gh("nvim-mini/mini.icons"),
   gh("nvim-lualine/lualine.nvim"),
 
@@ -16,14 +17,13 @@ vim.pack.add({
 
   { src = gh("saghen/blink.cmp"), version = vim.version.range("1.x") },
   gh("lewis6991/gitsigns.nvim"),
-  gh("j-hui/fidget.nvim"),
   gh("chentoast/marks.nvim"),
   gh("stevearc/conform.nvim"),
-  gh("brenoprata10/nvim-highlight-colors"),
-  gh("xiyaowong/transparent.nvim"),
+
   { src = gh("echasnovski/mini.clue"), version = vim.version.range("*") },
   { src = gh("echasnovski/mini.indentscope"), version = vim.version.range("*") },
   { src = gh("echasnovski/mini.surround"), version = vim.version.range("*") },
+
   gh("windwp/nvim-autopairs"),
   gh("folke/lazydev.nvim"),
 })

@@ -19,7 +19,6 @@ opt.ignorecase = true
 opt.smartcase = true
 
 opt.winborder = "single"
--- opt.shortmess = "IF"
 opt.termguicolors = true
 opt.showmode = false
 opt.background = "dark"

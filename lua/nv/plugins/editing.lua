@@ -6,8 +6,6 @@ vim.api.nvim_create_autocmd("InsertEnter", {
 })
 
 vim.schedule(function()
-  require("nvim-highlight-colors").setup({})
-
   local conform = require("conform")
   conform.setup({
     formatters_by_ft = {
@@ -89,9 +87,9 @@ vim.schedule(function()
         gitsigns.setqflist("all")
       end, { desc = "Set quickfix list (all)" })
       map("n", "<leader>hq", gitsigns.setqflist, { desc = "Set quickfix list" })
-      map("n", "<leader>tb", gitsigns.toggle_current_line_blame, { desc = "Toggle current line blame" })
-      map("n", "<leader>tw", gitsigns.toggle_word_diff, { desc = "Toggle word diff" })
-      map({ "o", "x" }, "ih", gitsigns.select_hunk, { desc = "Select hunk" })
+      map("n", "<leader>hb", gitsigns.toggle_current_line_blame, { desc = "Toggle current line blame" })
+      map("n", "<leader>hw", gitsigns.toggle_word_diff, { desc = "Toggle word diff" })
+      map({ "o", "x" }, "hh", gitsigns.select_hunk, { desc = "Select hunk" })
     end,
   })
 
@@ -135,11 +133,7 @@ vim.schedule(function()
     },
     symbol = "│",
   })
-  vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "help", "lazy" },
-    callback = function()
-      vim.b.miniindentscope_disable = true
-    end,
-  })
   require("mini.surround").setup({})
+
+  -- require("nvim-highlight-colors").setup({})
 end)
